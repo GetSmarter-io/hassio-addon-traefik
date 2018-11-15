@@ -67,7 +67,7 @@ printf "$ADDITIONAL_TOML_FILE" >> ${TOML_PATH}
 
 
 
-sed -i -e "s|###BASIC_AUTH###|$BASIC_AUTH|g" $TOML_PATH
+sed -i -e "s|###BASIC_AUTH###|$BASIC_AUTH|g" ${TOML_PATH}
 
 cat /traefik.toml
 echo "End Prepare Traefik TOML"
