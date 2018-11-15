@@ -3,7 +3,7 @@ set -e
 echo "Start Prepare Traefik TOML"
 CONFIG_PATH=/data/options.json
 TOML_PATH="/traefik.toml"
-
+ 
 # CONFIG_PATH="options_test.json"
 # TOML_PATH="traefik.toml"
 
@@ -16,7 +16,7 @@ FILE_LENGTH=$(jq  ".file | length" $CONFIG_PATH)
 ADDITIONAL_TOML_ACME=""
 ADDITIONAL_TOML_FILE_FRONTENDS=""
 ADDITIONAL_TOML_FILE_BACKENDS=""
-if [ "$CUSTOMIZE_ACTIVE" == "true" ]; then
+if [ "$ACME_ENABLED" == "true" ]; then
     acme_email=$(echo $ACME | jq --raw-output ".email")
     acme_storage=$(echo $ACME | jq --raw-output ".storage")
     acme_caServer=$(echo $ACME | jq --raw-output ".caServer")
@@ -53,7 +53,7 @@ do
     ADDITIONAL_TOML_FILE_BACKENDS="${ADDITIONAL_TOML_FILE_BACKENDS}\n    [backends.$file_item_id.servers.$file_item_id]";
     ADDITIONAL_TOML_FILE_BACKENDS="${ADDITIONAL_TOML_FILE_BACKENDS}\n      url = \"$file_item_url\"";
 
-    if [ "$CUSTOMIZE_ACTIVE" == "true" ]; then
+    if [ "$ACME_ENABLED" == "true" ]; then
         ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n[[acme.domains]]";
         ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n  main = \"$file_item_host\"";
     fi
