@@ -28,7 +28,7 @@ if [[ "${ACME_ENABLED}" == "true" ]]; then
     ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n  storage = \"${acme_storage}\"";
     ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n  caServer = \"${acme_caServer}\"";
     ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n  entryPoint = \"${acme_entryPoint}\"";
-    ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n  onHostRule = \"${acme_onHostRule}\"";
+    ADDITIONAL_TOML_ACME="${ADDITIONAL_TOML_ACME}\n  onHostRule = ${acme_onHostRule}";
 fi
 
 
