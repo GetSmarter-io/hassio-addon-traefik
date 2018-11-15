@@ -1,0 +1,44 @@
+{
+  "name": "Traefik",
+  "version": "1",
+  "slug": "traefik",
+  "description": "Traefik Extension",
+  "startup": "before",
+  "boot": "auto",
+  "options": {
+    "basicAuth": null,
+    "acme": {
+      "email": null,
+      "storage": "acme.json",
+      "caServer": "https://acme-v02.api.letsencrypt.org/directory",
+      "entryPoint": "https",
+      "onHostRule": true,
+      "enabled": true
+    },
+    "file":[]
+  },
+  "schema": {
+    "basicAuth": "str",
+    "acme": {
+      "email": "str",
+      "storage": "str",
+      "caServer": "str",
+      "entryPoint": "str",
+      "onHostRule": "bool",
+      "enabled": "bool"
+    },
+    "file":[
+      {
+        "id": "str",
+        "entryPoint": "str",
+        "host": "str",
+        "url" : "str"
+      }
+    ]
+  },
+  "webui": "http://[HOST]:[PORT:8080]/",
+  "ports": {
+    "8080/tcp": 8080,
+    "443/tcp" : 443
+  }
+}
